@@ -20,11 +20,10 @@ async def on_ready():
    
     print("on_ready")
     print(discord.__version__)
-    print(norolemember2)
+    print(norolemember2[2])
     for item in norolemember2:
         print(item)     
         
-     await norolemember2[2].kick()
 
 @bot.event
 async def on_command_error(ctx, error):
