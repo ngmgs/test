@@ -16,17 +16,14 @@ async def on_ready():
     print(discord.__version__)
     print(norolemember)
     for item in norolemember:
-        print(item)
-        
+        print(item)       
    
     print("on_ready")
     print(discord.__version__)
     print(norolemember2)
     for item in norolemember2:
         print(item)     
-
-
-        
+     
 
 @bot.event
 async def on_command_error(ctx, error):
