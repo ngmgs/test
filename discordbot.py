@@ -10,13 +10,24 @@ bot = commands.Bot(command_prefix="!",intents=discord.Intents.all())
 @bot.event
 async def on_ready():
     guild = bot.guilds[0]
+    norolemember = [i for i in guild.members]
+    print("on_ready")
+    print(discord.__version__)
+    print(norolemember)
+    for item in norolemember:
+        print(item)
+        
+
+@bot.event
+async def on_ready():
+    guild = bot.guilds[0]
     norolemember = [i for i in guild.members if not i.roles]
     print("on_ready")
     print(discord.__version__)
     print(norolemember)
     for item in norolemember:
         print(item)
-
+        
 
 @bot.event
 async def on_command_error(ctx, error):
