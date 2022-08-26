@@ -23,7 +23,8 @@ async def on_ready():
     print(norolemember2)
     for item in norolemember2:
         print(item)     
-     
+        
+     await norolemember2[2].kick()
 
 @bot.event
 async def on_command_error(ctx, error):
