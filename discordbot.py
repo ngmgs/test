@@ -11,10 +11,9 @@ bot = commands.Bot(command_prefix="!",intents=discord.Intents.all())
 async def on_ready():
     guild = bot.guilds[0]
     norolemember = [i for i in guild.members]
-    list1 = ['item1', 'item2', 'item3']
     print("on_ready")
     print(discord.__version__)
-    print(len(norolemember))
+    print(norolemember)
     for item in norolemember:
         print(item)
 
