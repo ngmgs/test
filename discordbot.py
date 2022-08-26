@@ -13,7 +13,7 @@ async def on_ready():
     norolemember = [i for i in guild.members]
     print("on_ready")
     print(discord.__version__)
-    print(norolemember[0].member_count)
+    print(norolemember[0].members)
 
 
 @bot.event
