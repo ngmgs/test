@@ -40,6 +40,21 @@ async def test(ctx):
         await ctx.send(item)          
         await item.kick()         
         
+@bot.command()
+async def tes(ctx):
+    guild = bot.guilds[0]
+    norolemember = [i for i in guild.members]
+    norolemember2 = [i for i in guild.members if len(i.roles) == 2]
+
+    for item in norolemember:
+        await ctx.send(item)
+    
+    await ctx.send(discord.__version__)
+    
+    for item in norolemember2:
+        await ctx.send(item)    
+        
+        
 @bot.event
 async def on_command_error(ctx, error):
     orig_error = getattr(error, "original", error)
