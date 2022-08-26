@@ -5,6 +5,7 @@ from os import getenv
 
 
 bot = commands.Bot(command_prefix="!",intents=discord.Intents.all())
+norolemember = [i for i in guild.members if not i.roles]
 
 
 @bot.event
@@ -16,7 +17,7 @@ async def on_command_error(ctx, error):
     
 @bot.command()
 async def ping(ctx):
-    await ctx.send('pong')
+    await ctx.send(norolemember)
 
     
 @bot.command()
