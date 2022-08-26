@@ -14,6 +14,9 @@ async def on_ready():
     print("on_ready")
     print(discord.__version__)
     print(len(norolemember))
+    list1 = ['item1', 'item2', 'item3']
+for item in list1:
+    print(item)
 
 
 @bot.event
