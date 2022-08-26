@@ -15,6 +15,7 @@ async def on_command_error(ctx, error):
 
 
 @bot.command()
+@has_permissions(manage_roles=True)
 async def kick(ctx, member:discord.Member, reason):
    await member.kick(reason=reason)
    embed=discord.Embed(title="KICK", color=0xff0000)
