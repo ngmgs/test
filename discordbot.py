@@ -16,7 +16,7 @@ async def on_ready():
     print(discord.__version__)
     print(len(norolemember))
     for item in list1:
-    print(item)
+        print(item)
 
 
 @bot.event
