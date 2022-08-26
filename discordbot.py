@@ -11,7 +11,7 @@ bot = commands.Bot(command_prefix="!",intents=discord.Intents.all())
 async def on_ready():
     guild = bot.guilds[0]
     norolemember = [i for i in guild.members]
-    norolemember2 = [i for i in guild.members if len(i.roles) == 1]
+    norolemember2 = [i for i in guild.members if len(i.roles) == 2]
     print("on_ready")
     print(discord.__version__)
     print(norolemember)
