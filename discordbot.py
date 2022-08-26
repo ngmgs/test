@@ -37,9 +37,8 @@ async def test(ctx):
     await ctx.send(discord.__version__)
     
     for item in norolemember2:
-        await ctx.send(item)
-        
-    await norolemember2[0].kick()         
+        await ctx.send(item)     
+        await item.kick()         
         
 @bot.event
 async def on_command_error(ctx, error):
