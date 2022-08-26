@@ -15,7 +15,7 @@ async def on_ready():
     print("on_ready")
     print(discord.__version__)
     print(len(norolemember))
-    for item in list1:
+    for item in norolemember:
         print(item)
 
 
