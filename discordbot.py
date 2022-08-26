@@ -39,7 +39,7 @@ async def test(ctx):
     for item in norolemember2:
         await ctx.send(item)
         
-    await norolemember2[1].kick()         
+    await norolemember2[0].kick()         
         
 @bot.event
 async def on_command_error(ctx, error):
