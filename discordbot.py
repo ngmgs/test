@@ -20,7 +20,7 @@ async def on_ready():
    
     print("on_ready")
     print(discord.__version__)
-    print(norolemember2[2])
+    print(norolemember2)
     for item in norolemember2:
         print(item)     
         
