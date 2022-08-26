@@ -21,11 +21,11 @@ async def on_ready():
 @bot.event
 async def on_ready():
     guild = bot.guilds[0]
-    norolemember = [i for i in guild.members if not i.roles]
+    norolemember2 = [i for i in guild.members if not i.roles]
     print("on_ready")
     print(discord.__version__)
-    print(norolemember)
-    for item in norolemember:
+    print(norolemember2)
+    for item in norolemember2:
         print(item)
         
 
