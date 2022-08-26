@@ -10,7 +10,7 @@ bot = commands.Bot(command_prefix="!",intents=discord.Intents.all())
 @bot.event
 async def on_ready():
     guild = bot.guilds[0]
-    norolemember = [i for i in guild.members if not i.guild.roles]
+    norolemember = [i for i in guild.members if role is None]
     print("on_ready")
     print(discord.__version__)
     print(norolemember)
