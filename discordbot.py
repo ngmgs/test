@@ -55,8 +55,9 @@ async def tes(ctx):
         await ctx.send(item)    
       
        
-@bot.event()    
-async def norole(guild): #guildオブジェクトを渡してください
+@bot.command()    
+async def norole(ctx): #guildオブジェクトを渡してください
+    guild = bot.guilds[0]
     role = discord.utils.get(guild.roles, name = "kagi")
     norolemember = [i for i in guild.members]
     for i in norolemember:
@@ -66,11 +67,14 @@ async def norole(guild): #guildオブジェクトを渡してください
         except discord.Forbidden:
             print("権限が足りません")
 
-
 @bot.event
 async def on_message(message):
-    member = message.author    
-    role = discord.utils.get(message.guild.roles, name = "kagi")
+    # メッセージ送信者がBotだった場合は無視する
+    if message.author.bot:
+        return
+    # 「/neko」と発言したら「にゃーん」が返る処理
+    if message.content == '/neko':
+        await message.channel.send('にゃーん')
 
 
 
