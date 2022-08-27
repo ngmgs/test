@@ -65,12 +65,13 @@ async def norole_kick(guild): #guildオブジェクトを渡してください
             print("権限が足りません")
 
             
+words=['words']
+
 @bot.event
 async def on_message(message):
-    words=['words']
-      for word in words:
-            if word in message.content:
-                print({message.content})            
+  for word in words:
+      if word in message.content:
+        print({message.content})         
         
 @bot.event
 async def on_command_error(ctx, error):
