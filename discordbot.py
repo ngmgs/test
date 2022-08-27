@@ -67,14 +67,24 @@ async def norole(ctx): #guildオブジェクトを渡してください
         except discord.Forbidden:
             print("権限が足りません")
 
+
 @bot.event
 async def on_message(message):
-    # メッセージ送信者がBotだった場合は無視する
-    if message.author.bot:
-        return
-    # 「/neko」と発言したら「にゃーん」が返る処理
-    if message.content == '/neko':
-        await message.channel.send('にゃーん')
+    words=['add']
+    words2=['remove']       
+    member = message.author    
+    role = discord.utils.get(message.guild.roles, name = "kagi")
+    for word in words:
+        if word in message.content:
+            print(member)   
+            print(role)
+            await member.add_roles(role, atomic=True)
+            
+    for word in words2:
+        if word in message.content:
+            print(member)   
+            print(role)
+            await member.remove_roles(role, atomic=True)   
 
     await bot.process_commands(message)
 
