@@ -94,7 +94,7 @@ async def on_message(message):
 channel_sent = None
 @tasks.loop(seconds=10)
 async def send_message_every_10sec():
-    now = datetime.now().strftime('%H:%M')       
+    now = datetime.now().strftime('%H' + 1 ':%M')       
     await channel_sent.send(now)
 
 
