@@ -113,6 +113,16 @@ async def on_ready():
     send_message_every_10sec.start() #定期実行するメソッドの後ろに.start()をつける
 
 
+@bot.command()    
+async def everyone(ctx): 
+    guild = bot.guilds[0]
+    channel_sent2 = bot.get_channel(1012237139729199136)
+    role = discord.utils.get(guild.roles, name = "@everyone")
+    await channel_sent2.set_permissions(role, send_messages=False)
+
+
+
+
 
 
 
