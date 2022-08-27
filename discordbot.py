@@ -70,6 +70,8 @@ async def norole(ctx): #guildオブジェクトを渡してください
 
 @bot.event
 async def on_message(message):
+    member = message.author    
+    role = discord.utils.get(message.guild.roles, name = "kagi")
 
 
 
