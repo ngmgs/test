@@ -1,6 +1,7 @@
 import discord
 import traceback
 from discord.ext import commands
+from discord.ext import tasks
 from os import getenv
 
 
@@ -89,8 +90,10 @@ async def on_message(message):
     await bot.process_commands(message)
 
 
-
-
+channel_sent = None
+@tasks.loop(seconds=10)
+async def send_message_every_10sec():
+    await channel_sent.send("10秒経ったよ")
 
 
 
