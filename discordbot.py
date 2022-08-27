@@ -116,9 +116,9 @@ async def on_ready():
 @bot.command()    
 async def everyone(ctx): 
     guild = bot.guilds[0]
-    channel_sent2 = bot.get_channel(1012237139729199136)
+    channel_sent2 = bot.get_channel(1012928069402636390)
     role = discord.utils.get(guild.roles, name = "@everyone")
-    await channel_sent2.set_permissions(role, send_messages=False)
+    await channel_sent2.set_permissions(role, read_messages=False)
 
 
 
