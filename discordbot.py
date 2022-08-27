@@ -96,7 +96,11 @@ async def send_message_every_10sec():
     await channel_sent.send("10秒経ったよ")
 
 
-
+@bot.event
+async def on_ready():
+    global channel_sent 
+    channel_sent = bot.get_channel(any_channel_id)
+    send_message_every_10sec.start() #定期実行するメソッドの後ろに.start()をつける
 
 
 
