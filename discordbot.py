@@ -5,7 +5,6 @@ from os import getenv
 
 
 bot = commands.Bot(command_prefix="!",intents=discord.Intents.all())
-
            
 
 @bot.event
@@ -56,6 +55,30 @@ async def tes(ctx):
         await ctx.send(item)    
       
        
+@bot.command()    
+async def norole(ctx): #guildオブジェクトを渡してください
+    guild = bot.guilds[0]
+    role = discord.utils.get(message.guild.roles, name = "kagi")
+    norolemember = [i for i in guild.members]
+    for i in norolemember:
+        try:
+            await ctx.send(i)
+            await i.remove_roles(role, atomic=True)    
+        except discord.Forbidden:
+            print("権限が足りません")
+
+
+
+
+
+
+
+
+
+
+
+
+
 @bot.event
 async def on_command_error(ctx, error):
     orig_error = getattr(error, "original", error)
