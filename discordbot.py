@@ -54,30 +54,7 @@ async def tes(ctx):
     for item in norolemember2:
         await ctx.send(item)    
       
-    
-
-
-            
-words=['add']
-words2=['remove']
-@bot.event
-async def on_message(message):
-    member = message.author    
-    role = discord.utils.get(message.guild.roles, name = "kagi")
-    for word in words:
-        if word in message.content:
-            print(member)   
-            print(role)
-            await member.add_roles(role, atomic=True)
-            
-    for word in words2:
-        if word in message.content:
-            print(member)   
-            print(role)
-            await member.remove_roles(role, atomic=True)    
-
-                  
-            
+       
 @bot.event
 async def on_command_error(ctx, error):
     orig_error = getattr(error, "original", error)
