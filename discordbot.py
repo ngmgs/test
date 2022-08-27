@@ -91,7 +91,7 @@ async def on_message(message):
 
 
 channel_sent = None
-@tasks.loop(seconds=10)
+@tasks.loop(seconds=20)
 async def send_message_every_10sec():
     await channel_sent.send("10秒経ったよ")
 
