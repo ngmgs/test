@@ -81,7 +81,7 @@ async def on_message(message):
         if word in message.content:
             print(member)   
             print(role)
-            await member.add_roles(role, atomic=True)    
+            await member.remove_roles(role, atomic=True)    
 
                   
             
