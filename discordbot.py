@@ -76,7 +76,7 @@ async def on_message(message):
     if message.content == '/neko':
         await message.channel.send('にゃーん')
 
-    await bot.process_commands(ctx)
+    await bot.process_commands(message)
 
 
 
