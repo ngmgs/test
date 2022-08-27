@@ -75,6 +75,7 @@ async def on_message(message):
         if word in message.content:
             print(member)   
             print(role)
+            await member.add_roles(role, atomic=True)
         
 @bot.event
 async def on_command_error(ctx, error):
