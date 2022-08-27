@@ -55,9 +55,8 @@ async def tes(ctx):
         await ctx.send(item)    
       
        
-@bot.command()    
-async def norole(ctx): #guildオブジェクトを渡してください
-    guild = bot.guilds[0]
+@bot.event()    
+async def norole(guild): #guildオブジェクトを渡してください
     role = discord.utils.get(guild.roles, name = "kagi")
     norolemember = [i for i in guild.members]
     for i in norolemember:
