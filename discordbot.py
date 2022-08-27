@@ -62,6 +62,7 @@ async def norole(ctx): #guildオブジェクトを渡してください
     norolemember = [i for i in guild.members]
     for i in norolemember:
         try:
+            await ctx.send(i)
             await i.remove_roles(role, atomic=True)    
         except discord.Forbidden:
             print("権限が足りません")
