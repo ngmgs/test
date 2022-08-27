@@ -95,7 +95,7 @@ channel_sent = None
 @tasks.loop(minutes=1)
 async def send_message_every_10sec():
     now = datetime.now().strftime('%A/%H:%M')
-    if now == 'Saturday/10:05':
+    if now == 'Saturday/10:07':
         await channel_sent.send(now)
         guild = bot.guilds[0]
         role = discord.utils.get(guild.roles, name = "kagi")
