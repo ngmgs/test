@@ -95,15 +95,15 @@ channel_sent = None
 @tasks.loop(minutes=1)
 async def send_message_every_10sec():
     now = datetime.now().strftime('%A/%H:%M')
-        await channel_sent.send(now)
-        guild = bot.guilds[0]
-        role = discord.utils.get(guild.roles, name = "kagi")
-        norolemember = [i for i in guild.members]
-        for i in norolemember:
-            try:
-                await i.remove_roles(role, atomic=True)    
-            except discord.Forbidden:
-                print("権限が足りません")
+    await channel_sent.send(now)
+    guild = bot.guilds[0]
+    role = discord.utils.get(guild.roles, name = "kagi")
+    norolemember = [i for i in guild.members]
+    for i in norolemember:
+        try:
+            await i.remove_roles(role, atomic=True)    
+        except discord.Forbidden:
+            print("権限が足りません")
 
 @bot.event
 async def on_ready():
