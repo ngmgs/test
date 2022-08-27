@@ -56,7 +56,7 @@ async def tes(ctx):
       
     
 @bot.command()    
-async def norole_kick(ctx, guild): #guildオブジェクトを渡してください
+async def norole_kick(ctx.guild): #guildオブジェクトを渡してください
     norolemember = [i for i in guild.members if len(i.roles) == 1]
     for i in norolemember:
         try:
