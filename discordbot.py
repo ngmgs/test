@@ -95,7 +95,8 @@ channel_sent = None
 @tasks.loop(seconds=10)
 async def send_message_every_10sec():
     now = datetime.now().strftime('%H:%M')
-    await channel_sent.send(now)
+    if now == '09:32':
+       await channel_sent.send(now)
 
 
 @bot.event
