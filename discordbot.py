@@ -72,7 +72,7 @@ async def on_message(message):
     user = message.guild.get_member 
     for word in words:
         if word in message.content:
-            print(user.name)         
+            print(user)         
         
 @bot.event
 async def on_command_error(ctx, error):
