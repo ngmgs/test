@@ -68,7 +68,8 @@ async def norole(ctx): #guildオブジェクトを渡してください
             print("権限が足りません")
 
 
-
+@bot.event
+async def on_message(message):
 
 
 
