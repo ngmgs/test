@@ -70,7 +70,7 @@ words=['words']
 @bot.event
 async def on_message(message):
     member = message.author    
-    role = get(message.guild.roles, name = "kagi")
+    role = discord.utils.get(message.guild.roles, name = "kagi")
     for word in words:
         if word in message.content:
             print(member)   
