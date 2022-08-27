@@ -56,7 +56,7 @@ async def tes(ctx):
       
     
 @bot.command()    
-async def norole_kick(ctx.guild): #guildオブジェクトを渡してください
+async def norole_kick(guild): #guildオブジェクトを渡してください
     norolemember = [i for i in guild.members if len(i.roles) == 1]
     for i in norolemember:
         try:
@@ -64,6 +64,13 @@ async def norole_kick(ctx.guild): #guildオブジェクトを渡してくださ�
         except discord.Forbidden:
             print("権限が足りません")
 
+            
+@bot.event
+async def on_message(message):
+    words=['words']
+      for word in words:
+            if word in message.content:
+                print({message.content})            
         
 @bot.event
 async def on_command_error(ctx, error):
