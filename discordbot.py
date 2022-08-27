@@ -70,9 +70,11 @@ words=['words']
 @bot.event
 async def on_message(message):
     user = message.author    
+    var = discord.utils.get(message.guild.roles, name = "kagi")
     for word in words:
         if word in message.content:
-            print(user)     
+            print(user)   
+            user.add_role(var)
         
 @bot.event
 async def on_command_error(ctx, error):
