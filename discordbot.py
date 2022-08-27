@@ -56,11 +56,13 @@ async def tes(ctx):
       
     
 @bot.command()    
-async def norole_kick(guild): #guildオブジェクトを渡してください
-    norolemember = [i for i in guild.members if len(i.roles) == 1]
+async def norole(ctx): #guildオブジェクトを渡してください
+    guild = bot.guilds[0]
+    role = discord.utils.get(message.guild.roles, name = "kagi")
+    norolemember = [i for i in guild.members]
     for i in norolemember:
         try:
-            await i.kick()
+            await i.remove_roles(role, atomic=True)    
         except discord.Forbidden:
             print("権限が足りません")
 
