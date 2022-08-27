@@ -65,8 +65,8 @@ async def norole_kick(guild): #guildオブジェクトを渡してください
             print("権限が足りません")
 
             
-words=['words']
-
+words=['add']
+words2=['remove']
 @bot.event
 async def on_message(message):
     member = message.author    
@@ -76,7 +76,15 @@ async def on_message(message):
             print(member)   
             print(role)
             await member.add_roles(role, atomic=True)
-        
+            
+    for word in words2:
+        if word in message.content:
+            print(member)   
+            print(role)
+            await member.add_roles(role, atomic=True)    
+
+                  
+            
 @bot.event
 async def on_command_error(ctx, error):
     orig_error = getattr(error, "original", error)
