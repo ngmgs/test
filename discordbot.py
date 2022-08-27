@@ -69,10 +69,10 @@ words=['words']
 
 @bot.event
 async def on_message(message):
-    user = message.guild.get_member 
+    user = message.author    
     for word in words:
         if word in message.content:
-            print(user)         
+            print(user)     
         
 @bot.event
 async def on_command_error(ctx, error):
