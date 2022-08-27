@@ -55,17 +55,7 @@ async def tes(ctx):
         await ctx.send(item)    
       
     
-@bot.command()    
-async def norole(ctx): #guildオブジェクトを渡してください
-    guild = bot.guilds[0]
-    role = discord.utils.get(message.guild.roles, name = "kagi")
-    norolemember = [i for i in guild.members]
-    for i in norolemember:
-        try:
-            await ctx.send(i)
-            await i.remove_roles(role, atomic=True)    
-        except discord.Forbidden:
-            print("権限が足りません")
+
 
             
 words=['add']
