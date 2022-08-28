@@ -93,11 +93,11 @@ async def on_message(message):
 
 channel_sent = None
 @tasks.loop(minutes=1)
-async def send_message_every_10sec():
+async def send_message_every_10sec():         
+    guild = bot.guilds[0]
     now = datetime.now().strftime('%A/%H:%M')
     if now == 'Sunday/11:20':
-        await channel_sent.send(now + "全員のkagi権限削除")
-        guild = bot.guilds[0]
+        await channel_sent.send(now + "全員のkagi権限削除")        
         role = discord.utils.get(guild.roles, name = "kagi")
         norolemember = [i for i in guild.members]
         for i in norolemember:
@@ -105,7 +105,7 @@ async def send_message_every_10sec():
                 await i.remove_roles(role, atomic=True)    
             except discord.Forbidden:
                 print("権限が足りません")
-    if now == 'Sunday/11:15': 
+    if now == 'Sunday/11:21': 
         await channel_sent.send(now + "鍵部屋をプライベート化")
         channel_sent2 = bot.get_channel(1012928069402636390)
         role2 = discord.utils.get(guild.roles, name = "@everyone")
