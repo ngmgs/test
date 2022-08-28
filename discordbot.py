@@ -96,7 +96,7 @@ channel_sent = None
 async def send_message_every_10sec():
     now = datetime.now().strftime('%A/%H:%M')
     if now == 'Sunday/10:55':
-        await channel_sent.send(now)
+        await channel_sent.send(now'あ')
         guild = bot.guilds[0]
         role = discord.utils.get(guild.roles, name = "kagi")
         norolemember = [i for i in guild.members]
@@ -105,7 +105,7 @@ async def send_message_every_10sec():
                 await i.remove_roles(role, atomic=True)    
             except discord.Forbidden:
                 print("権限が足りません")
-     if now == 'Sunday/10:56':   
+    if now == 'Sunday/10:56':   
         channel_sent2 = bot.get_channel(1012928069402636390)
         role2 = discord.utils.get(guild.roles, name = "@everyone")
         await channel_sent2.set_permissions(role2, read_messages=False)
