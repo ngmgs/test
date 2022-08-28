@@ -59,7 +59,7 @@ async def tes(ctx):
        
 @bot.command()    
 async def norole(ctx): #guildオブジェクトを渡してください
-    guild = ctx.guild
+    guild = bot.guilds[0]
     role = discord.utils.get(guild.roles, name = "kagi")
     norolemember = [i for i in guild.members]
     for i in norolemember:
@@ -95,7 +95,11 @@ channel_sent = None
 @tasks.loop(minutes=1)
 async def send_message_every_10sec():
     now = datetime.now().strftime('%A/%H:%M')
-    if now == 'Saturday/19:00':
+    if now == 'Sanday/04:37':
+        channel_sent2 = bot.get_channel(1012928069402636390)
+        role2 = discord.utils.get(guild.roles, name = "@everyone")
+        await channel_sent2.set_permissions(role2, read_messages=False)
+        
         await channel_sent.send(now)
         guild = bot.guilds[0]
         role = discord.utils.get(guild.roles, name = "kagi")
