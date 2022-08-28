@@ -94,7 +94,7 @@ async def on_message(message):
 channel_sent = None
 @tasks.loop(minutes=1)
 async def send_message_every_10sec():
-    now = datetime.now().strftime('%A/%H:%M')
+        now = datetime.now().strftime('%A/%H:%M')
     
         channel_sent2 = bot.get_channel(1012928069402636390)
         role2 = discord.utils.get(guild.roles, name = "@everyone")
