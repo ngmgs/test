@@ -97,10 +97,7 @@ channel_sent = None
     time=datetime.time(
         date1 = datetime.date.today()
         print(date1)
-        hour=09,
-        tzinfo=datetime.timezone(
-            datetime.timedelta(hours=8)
-        )
+        
     )
 )
 async def send_message_every_10sec():         
