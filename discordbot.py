@@ -94,7 +94,7 @@ async def on_message(message):
 channel_sent = None
 @tasks.loop(
     time=time(
-        hour=19,
+        hour=17,
         tzinfo=timezone(
             timedelta(hours=9)
         )
@@ -103,7 +103,7 @@ channel_sent = None
 async def send_message_every_10sec():         
     guild = bot.guilds[0]
     now = datetime.now().strftime('%A/%H:%M')
-    if now == 'Friday/19:00':
+    if now == 'Thursday/17:00':
         await channel_sent.send(now + "全員のkagi権限削除")        
         role = discord.utils.get(guild.roles, name = "kagi")
         norolemember = [i for i in guild.members]
