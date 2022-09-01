@@ -94,7 +94,7 @@ async def on_message(message):
 channel_sent = None
 @tasks.loop(
     time=time(
-        hour=17, minute=30,
+        hour=17, minute=35,
         tzinfo=timezone(
             timedelta(hours=9)
         )
@@ -144,7 +144,7 @@ async def everyone(ctx):
 
 @tasks.loop(
     time=time(
-        hour=17, minute=30,
+        hour=17, minute=37,
         tzinfo=timezone(
             timedelta(hours=9)
         )
