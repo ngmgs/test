@@ -94,7 +94,10 @@ async def on_message(message):
 channel_sent = None
 @tasks.loop(
     time=time(
-        minute=26
+        hour=17,
+        tzinfo=timezone(
+            timedelta(hours=+9)
+        )
     )
 )
 async def send_message_every_10sec():         
