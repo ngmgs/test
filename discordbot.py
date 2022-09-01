@@ -94,7 +94,7 @@ async def on_message(message):
 channel_sent = None
 @tasks.loop(
     time=time(
-        minutes=18,
+        minute=20,
         tzinfo=timezone(
             timedelta(hours=9)
         )
