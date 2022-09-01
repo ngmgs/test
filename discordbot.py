@@ -92,7 +92,14 @@ async def on_message(message):
 
 
 channel_sent = None
-@tasks.loop(minutes=1)
+@tasks.loop(
+    time=datetime.time(
+        hour=19,
+        tzinfo=datetime.timezone(
+            datetime.timedelta(hours=9)
+        )
+    )
+)
 async def send_message_every_10sec():         
     guild = bot.guilds[0]
     now = datetime.now().strftime('%A/%H:%M')
