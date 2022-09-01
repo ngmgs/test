@@ -95,7 +95,7 @@ channel_sent = None
 @tasks.loop(
     time=datetime.time(
         hour=19,
-        tzinfo=timezone(
+        tzinfo=datetime.timezone(
             datetime.timedelta(hours=9)
         )
     )
