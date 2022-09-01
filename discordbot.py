@@ -3,7 +3,7 @@ import traceback
 from discord.ext import commands
 from discord.ext import tasks
 from os import getenv
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timezone, timedelta, time
 
 
 bot = commands.Bot(command_prefix="!",intents=discord.Intents.all())
@@ -93,7 +93,7 @@ async def on_message(message):
 
 channel_sent = None
 @tasks.loop(
-    time=datetime.time(
+    time=time(
         hour=19,
         tzinfo=timezone(
             timedelta(hours=9)
