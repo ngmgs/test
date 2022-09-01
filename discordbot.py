@@ -97,9 +97,9 @@ channel_sent = None
         hour=16,
         tzinfo=timezone(
             timedelta(hours=9)
-            print("a")
         )
     )
+    print("権限が足りません")
 )
 async def send_message_every_10sec():         
     guild = bot.guilds[0]
