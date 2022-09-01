@@ -97,6 +97,7 @@ channel_sent = None
         hour=16,
         tzinfo=timezone(
             timedelta(hours=9)
+            print("a")
         )
     )
 )
