@@ -93,7 +93,6 @@ async def on_message(message):
 
 channel_sent = None
 @tasks.loop(
-    await channel_sent.send("あ") 
     time=time(
         hour=17,
         tzinfo=timezone(
