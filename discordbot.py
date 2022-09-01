@@ -7,8 +7,53 @@ from datetime import datetime, timezone, timedelta, time
 
 
 bot = commands.Bot(command_prefix="!",intents=discord.Intents.all())
-           
+channel_sent = None
 
+@tasks.loop(
+    time=time(
+        hour=4, minute=1,
+        tzinfo=timezone(
+            timedelta(hours=9)
+        )
+    )
+)
+async def send_message_every_10sec():         
+    guild = bot.guilds[0]
+    t_delta = timedelta(hours=9)
+    JST = timezone(t_delta, 'JST')
+    now = datetime.now(JST).strftime('%A/%H:%M')
+    await channel_sent.send(now)    
+    if now == 'Saturday/04:00':
+        await channel_sent.send(now + "全員のkagi権限削除")        
+        role = discord.utils.get(guild.roles, name = "kagi")
+        norolemember = [i for i in guild.members]
+        for i in norolemember:
+            try:
+                await i.remove_roles(role, atomic=True)    
+            except discord.Forbidden:
+                print("権限が足りません")
+           
+        await channel_sent.send(now + "鍵部屋をプライベート解除")                      
+        channel_sent2 = bot.get_channel(1012928069402636390)
+        role2 = discord.utils.get(guild.roles, name = "@everyone")
+        await channel_sent2.set_permissions(role2, read_messages=True)
+           
+    if now == 'Tuesday/04:00': 
+        await channel_sent.send(now + "鍵部屋をプライベート化")
+        channel_sent2 = bot.get_channel(1012928069402636390)
+        role2 = discord.utils.get(guild.roles, name = "@everyone")
+        await channel_sent2.set_permissions(role2, read_messages=False)
+
+           
+@bot.event
+async def on_ready():
+    global channel_sent 
+    channel_sent = bot.get_channel(1012237139729199136)
+    send_message_every_10sec.start() #定期実行するメソッドの後ろに.start()をつける           
+
+           
+           
+           
 @bot.event
 async def on_ready():
     guild = bot.guilds[0]
@@ -91,48 +136,7 @@ async def on_message(message):
     await bot.process_commands(message)
 
 
-channel_sent = None
-@tasks.loop(
-    time=time(
-        hour=4, minute=1,
-        tzinfo=timezone(
-            timedelta(hours=9)
-        )
-    )
-)
-async def send_message_every_10sec():         
-    guild = bot.guilds[0]
-    t_delta = timedelta(hours=9)
-    JST = timezone(t_delta, 'JST')
-    now = datetime.now(JST).strftime('%A/%H:%M')
-    await channel_sent.send(now)    
-    if now == 'Saturday/04:00':
-        await channel_sent.send(now + "全員のkagi権限削除")        
-        role = discord.utils.get(guild.roles, name = "kagi")
-        norolemember = [i for i in guild.members]
-        for i in norolemember:
-            try:
-                await i.remove_roles(role, atomic=True)    
-            except discord.Forbidden:
-                print("権限が足りません")
-           
-        await channel_sent.send(now + "鍵部屋をプライベート解除")                      
-        channel_sent2 = bot.get_channel(1012928069402636390)
-        role2 = discord.utils.get(guild.roles, name = "@everyone")
-        await channel_sent2.set_permissions(role2, read_messages=True)
-           
-    if now == 'Tuesday/04:00': 
-        await channel_sent.send(now + "鍵部屋をプライベート化")
-        channel_sent2 = bot.get_channel(1012928069402636390)
-        role2 = discord.utils.get(guild.roles, name = "@everyone")
-        await channel_sent2.set_permissions(role2, read_messages=False)
 
-           
-@bot.event
-async def on_ready():
-    global channel_sent 
-    channel_sent = bot.get_channel(1012237139729199136)
-    send_message_every_10sec.start() #定期実行するメソッドの後ろに.start()をつける
 
 
 @bot.command()    
