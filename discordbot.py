@@ -99,7 +99,6 @@ channel_sent = None
             timedelta(hours=9)
         )
     )
-print("権限が足りません")
 )
 async def send_message_every_10sec():         
     guild = bot.guilds[0]
