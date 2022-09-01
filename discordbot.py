@@ -94,7 +94,7 @@ async def on_message(message):
 channel_sent = None
 @tasks.loop(
     time=time(
-        hour=17, minute=35,
+        hour=17, minute=54,
         tzinfo=timezone(
             timedelta(hours=9)
         )
@@ -144,18 +144,22 @@ async def everyone(ctx):
 
 @tasks.loop(
     time=time(
-        hour=17, minute=37,
+        hour=17, minute=55,
         tzinfo=timezone(
             timedelta(hours=9)
         )
     )
 )
-async def send_message_every_10sec():         
+async def send_message_every_10sec2():         
     guild = bot.guilds[0]
     now = datetime.now().strftime('%A/%H:%M')
     await channel_sent.send(now + now)    
 
-
+@bot.event
+async def on_ready():
+    global channel_sent 
+    channel_sent = bot.get_channel(1012237139729199136)
+    send_message_every_10sec2.start() #定期実行するメソッドの後ろに.start()をつける
            
 
 
