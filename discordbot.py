@@ -142,6 +142,18 @@ async def everyone(ctx):
 
 
 
+@tasks.loop(
+    time=time(
+        hour=17, minute=30,
+        tzinfo=timezone(
+            timedelta(hours=9)
+        )
+    )
+)
+async def send_message_every_10sec():         
+    guild = bot.guilds[0]
+    now = datetime.now().strftime('%A/%H:%M')
+    await channel_sent.send(now + now)    
 
 
            
