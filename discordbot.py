@@ -102,8 +102,8 @@ channel_sent = None
 )
 async def send_message_every_10sec():         
     guild = bot.guilds[0]
-    t_delta = datetime.timedelta(hours=9)
-    JST = datetime.timezone(t_delta, 'JST')
+    t_delta = timedelta(hours=9)
+    JST = timezone(t_delta, 'JST')
     now = datetime.now(JST).strftime('%A/%H:%M')
     await channel_sent.send(now)    
     if now == 'Thursday/16:00':
