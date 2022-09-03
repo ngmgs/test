@@ -144,7 +144,7 @@ async def on_ready():
     channel_sent = bot.get_channel(1012237139729199136)
     send_message_every_10sec.start() #定期実行するメソッドの後ろに.start()をつける    
 """
-send_message_every_10sec.start()
+
 @tasks.loop(
     time=time(
         hour=17, minute=50,
