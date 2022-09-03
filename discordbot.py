@@ -147,7 +147,7 @@ async def on_ready():
 
 @tasks.loop(
     time=time(
-        hour=17, minute=50,
+        hour=18, minute=23,
         tzinfo=timezone(
             timedelta(hours=9)
         )
