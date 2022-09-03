@@ -12,7 +12,7 @@ channel_sent = None
 
 @tasks.loop(
     time=time(
-        hour=4, minute=1,
+        hour=17, minute=25,
         tzinfo=timezone(
             timedelta(hours=9)
         )
@@ -24,7 +24,7 @@ async def send_message_every_10sec():
     JST = timezone(t_delta, 'JST')
     now = datetime.now(JST).strftime('%A/%H:%M')
     await channel_sent.send(now)    
-    if now == 'Saturday/04:00':
+    if now == 'Saturday/17:25':
         await channel_sent.send(now + "全員のkagi権限削除")        
         role = discord.utils.get(guild.roles, name = "kagi")
         norolemember = [i for i in guild.members]
@@ -39,7 +39,7 @@ async def send_message_every_10sec():
         role2 = discord.utils.get(guild.roles, name = "@everyone")
         await channel_sent2.set_permissions(role2, read_messages=True)
            
-    if now == 'Tuesday/04:00': 
+    if now == 'Tuesday/04:01': 
         await channel_sent.send(now + "鍵部屋をプライベート化")
         channel_sent2 = bot.get_channel(1012928069402636390)
         role2 = discord.utils.get(guild.roles, name = "@everyone")
