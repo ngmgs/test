@@ -16,8 +16,6 @@ async def loop_10sec():
 async def fn():
     await loop_10sec.start()
 
-loop_ = asyncio.get_event_loop()
-loop_.run_until_complete(fn())
 
 token = getenv('DISCORD_BOT_TOKEN')
 bot.run(token)
