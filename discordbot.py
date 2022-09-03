@@ -13,7 +13,7 @@ channel_sent = None
 async def loop_10sec():
     print("aaa")  
     
-loop_10sec.start()
+bot.loop_10sec.start()
 
 
 
