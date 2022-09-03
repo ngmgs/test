@@ -12,7 +12,7 @@ channel_sent = None
 
 @tasks.loop(
     time=time(
-        hour=17, minute=25,
+        hour=17, minute=28,
         tzinfo=timezone(
             timedelta(hours=9)
         )
