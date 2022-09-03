@@ -12,7 +12,7 @@ channel_sent = None
 
 @tasks.loop(
     time=time(
-        hour=17, minute=35,
+        hour=17, minute=50,
         tzinfo=timezone(
             timedelta(hours=9)
         )
@@ -46,11 +46,7 @@ async def send_message_every_10sec():
         await channel_sent2.set_permissions(role2, read_messages=False)
 
            
-@bot.event
-async def on_ready():
-    global channel_sent 
-    channel_sent = bot.get_channel(1012237139729199136)
-    send_message_every_10sec.start() #定期実行するメソッドの後ろに.start()をつける    
+
            
            
            
@@ -176,5 +172,12 @@ async def kick(ctx, member:discord.Member, reason):
    await ctx.send(embed=embed)
 
 
+@bot.event
+async def on_ready():
+    global channel_sent 
+    channel_sent = bot.get_channel(1012237139729199136)
+    send_message_every_10sec.start() #定期実行するメソッドの後ろに.start()をつける    
+
+    
 token = getenv('DISCORD_BOT_TOKEN')
 bot.run(token)
