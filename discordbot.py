@@ -1,7 +1,8 @@
 import discord
+import traceback
 from discord.ext import commands
 from discord.ext import tasks
-
+from os import getenv
 
 bot = commands.Bot(command_prefix="!",intents=discord.Intents.all())
 channel_sent = None
@@ -13,7 +14,7 @@ channel_sent = None
 async def loop_10sec():
     print("aaa")  
     
-bot.loop_10sec.start()
+loop_10sec.start()
 
 
 
