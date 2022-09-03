@@ -6,7 +6,7 @@ from os import getenv
 from datetime import datetime, timezone, timedelta, time
 
 
-bot = commands.Bot(command_prefix="!",intents=discord.Intents.all())
+bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
 
 @bot.event
