@@ -13,10 +13,10 @@ channel_sent = None
 
 
 @tasks.loop(seconds=10)
-async def loop():
+async def loop_10sec():
     print("aaa")  
     
-loop.start()
+loop_10sec.start()
 
 
 
