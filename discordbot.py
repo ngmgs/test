@@ -110,7 +110,7 @@ async def everyone(ctx):
 
 @tasks.loop(
     time=time(
-        hour=17, minute=28,
+        hour=17, minute=32,
         tzinfo=timezone(
             timedelta(hours=9)
         )
@@ -122,7 +122,7 @@ async def send_message_every_10sec():
     JST = timezone(t_delta, 'JST')
     now = datetime.now(JST).strftime('%A/%H:%M')
     await channel_sent.send(now)    
-    if now == 'Saturday/17:25':
+    if now == 'Saturday/17:32':
         await channel_sent.send(now + "全員のkagi権限削除")        
         role = discord.utils.get(guild.roles, name = "kagi")
         norolemember = [i for i in guild.members]
