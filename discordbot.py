@@ -110,7 +110,7 @@ async def everyone(ctx):
 
 @tasks.loop(
     time=time(
-        hour=17, minute=32,
+        hour=17, minute=40,
         tzinfo=timezone(
             timedelta(hours=9)
         )
