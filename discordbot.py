@@ -14,9 +14,7 @@ channel_sent = None
 
 @tasks.loop(seconds=10)
 async def loop():
-    now = datetime.now(JST).strftime('%A/%H:%M')
-    channel_sent = bot.get_channel(1012237139729199136)
-    await channel_sent.send(now)    
+    print("aaa")  
     
 loop.start()
 
