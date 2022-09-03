@@ -1,5 +1,6 @@
 import discord
 import traceback
+import asyncio
 from discord.ext import commands
 from discord.ext import tasks
 from os import getenv
