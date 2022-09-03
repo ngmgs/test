@@ -145,14 +145,7 @@ async def on_ready():
     send_message_every_10sec.start() #定期実行するメソッドの後ろに.start()をつける    
 """
 
-@tasks.loop(
-    time=time(
-        hour=18, minute=23,
-        tzinfo=timezone(
-            timedelta(hours=9)
-        )
-    )
-)
+@tasks.loop(minutes=1)
 async def send_message_every_10sec():         
     guild = bot.guilds[0]
     t_delta = timedelta(hours=9)
@@ -185,6 +178,6 @@ async def send_message_every_10sec():
 
 
 
-
+send_message_every_10sec.start()
 token = getenv('DISCORD_BOT_TOKEN')
 bot.run(token)
