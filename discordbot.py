@@ -21,5 +21,6 @@ loop_10sec.start()
 
 
 
+
 token = getenv('DISCORD_BOT_TOKEN')
 bot.run(token)
