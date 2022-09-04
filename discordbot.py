@@ -9,8 +9,6 @@ from datetime import datetime, timezone, timedelta, time
 bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
 
-
-
 @bot.command()
 async def test(ctx):
     guild = bot.guilds[0]
@@ -75,7 +73,7 @@ async def on_message(message):
 channel_sent = None
 @tasks.loop(
     time=time(
-        hour=4, minute=1,
+        hour=1, minute=31,
         tzinfo=timezone(
             timedelta(hours=9)
         )
