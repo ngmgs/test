@@ -9,22 +9,7 @@ from datetime import datetime, timezone, timedelta, time
 bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
 
-@bot.event
-async def on_ready():
-    guild = bot.guilds[0]
-    norolemember = [i for i in guild.members]
-    norolemember2 = [i for i in guild.members if len(i.roles) == 1]
-    print("on_ready")
-    print(discord.__version__)
-    print(norolemember)
-    for item in norolemember:
-        print(item)
 
-    print("on_ready")
-    print(discord.__version__)
-    print(norolemember2)
-    for item in norolemember2:
-        print(item)
 
 @bot.command()
 async def test(ctx):
@@ -128,6 +113,21 @@ async def on_ready():
     global channel_sent
     channel_sent = bot.get_channel(1012237139729199136)
     send_message_every_10sec.start()  # 定期実行するメソッドの後ろに.start()をつける
+
+    guild = bot.guilds[0]
+    norolemember = [i for i in guild.members]
+    norolemember2 = [i for i in guild.members if len(i.roles) == 1]
+    print("on_ready")
+    print(discord.__version__)
+    print(norolemember)
+    for item in norolemember:
+        print(item)
+
+    print("on_ready")
+    print(discord.__version__)
+    print(norolemember2)
+    for item in norolemember2:
+        print(item)
 
 @bot.command()
 async def everyone(ctx):
