@@ -100,7 +100,7 @@ async def on_command_error(ctx, error):
 channel_sent = None
 @tasks.loop(
     time=time(
-        hour=1, minute=50,
+        hour=4, minute=1,
         tzinfo=timezone(
             timedelta(hours=9)
         )
