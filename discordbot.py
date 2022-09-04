@@ -105,7 +105,7 @@ async def send_message_every_10sec():
     JST = timezone(t_delta, 'JST')
     now = datetime.now(JST).strftime('%A/%H:%M')
     await channel_sent.send(now)
-    if now == 'Sunday/04:01':
+    if now == 'Saturday/04:01':
         await channel_sent.send(now + "全員のkagi権限削除")
         role = discord.utils.get(guild.roles, name = "kagi")
         norolemember = [i for i in guild.members]
