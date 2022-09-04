@@ -73,7 +73,7 @@ async def on_message(message):
 channel_sent = None
 @tasks.loop(
     time=time(
-        hour=1, minute=31,
+        hour=4, minute=1,
         tzinfo=timezone(
             timedelta(hours=9)
         )
@@ -113,8 +113,8 @@ async def on_ready():
     send_message_every_10sec.start()  # 定期実行するメソッドの後ろに.start()をつける
 
     guild = bot.guilds[0]
-    norolemember = [i for i in guild.members]
-    norolemember2 = [i for i in guild.members if len(i.roles) == 1]
+    norolemember = [i for i in guild.members]  # 全てのメンバー
+    norolemember2 = [i for i in guild.members if len(i.roles) == 1]  # 役職が一つ（everyoneのみ）のメンバー
     print("on_ready")
     print(discord.__version__)
     print(norolemember)
