@@ -50,6 +50,26 @@ async def norole(ctx):  # guildオブジェクトを渡してください
         except discord.Forbidden:
             print("権限が足りません")
 
+@bot.command()
+async def everyone(ctx):
+    guild = bot.guilds[0]
+    channel_sent2 = bot.get_channel(1012928069402636390)
+    role = discord.utils.get(guild.roles, name="@everyone")
+    await channel_sent2.set_permissions(role, read_messages=False)
+
+@bot.command()
+async def ping(ctx):
+    await ctx.send(discord.__version__)
+
+@bot.command()
+@commands.has_permissions(administrator=True)
+async def kick(ctx, member: discord.Member, reason):
+    await member.kick(reason=reason)
+    embed = discord.Embed(title="KICK", color=0xff0000)
+    embed.add_field(name="メンバー", value=f"{member.mention}", inline=False)
+    embed.add_field(name="理由", value=f"{reason}", inline=False)
+    await ctx.send(embed=embed)
+
 @bot.event
 async def on_message(message):
     words = ['https']
@@ -60,20 +80,27 @@ async def on_message(message):
         if word in message.content:
             print(member)
             print(role)
-            await member.add_roles(role, atomic=True)
+            await member.add_roles(role, atomic=True)  # httpsを含む文字を発言すると発言したメンバーに役職kagiを付与
 
     for word in words2:
         if word in message.content:
             print(member)
             print(role)
-            await member.remove_roles(role, atomic=True)
+            await member.remove_roles(role, atomic=True)  # removeを含む文字を発言すると発言したメンバーの役職kagiを削除
 
     await bot.process_commands(message)
+
+@bot.event
+async def on_command_error(ctx, error):
+    orig_error = getattr(error, "original", error)
+    error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
+    await ctx.send(error_msg)
+
 
 channel_sent = None
 @tasks.loop(
     time=time(
-        hour=4, minute=1,
+        hour=1, minute=50,
         tzinfo=timezone(
             timedelta(hours=9)
         )
@@ -108,10 +135,6 @@ async def send_message_every_10sec():
 
 @bot.event
 async def on_ready():
-    global channel_sent
-    channel_sent = bot.get_channel(1012237139729199136)
-    send_message_every_10sec.start()  # 定期実行するメソッドの後ろに.start()をつける
-
     guild = bot.guilds[0]
     norolemember = [i for i in guild.members]  # 全てのメンバー
     norolemember2 = [i for i in guild.members if len(i.roles) == 1]  # 役職が一つ（everyoneのみ）のメンバー
@@ -127,32 +150,9 @@ async def on_ready():
     for item in norolemember2:
         print(item)
 
-@bot.command()
-async def everyone(ctx):
-    guild = bot.guilds[0]
-    channel_sent2 = bot.get_channel(1012928069402636390)
-    role = discord.utils.get(guild.roles, name="@everyone")
-    await channel_sent2.set_permissions(role, read_messages=False)
-
-@bot.event
-async def on_command_error(ctx, error):
-    orig_error = getattr(error, "original", error)
-    error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
-    await ctx.send(error_msg)
-
-@bot.command()
-async def ping(ctx):
-    await ctx.send(discord.__version__)
-
-@bot.command()
-@commands.has_permissions(administrator=True)
-async def kick(ctx, member: discord.Member, reason):
-    await member.kick(reason=reason)
-    embed = discord.Embed(title="KICK", color=0xff0000)
-    embed.add_field(name="メンバー", value=f"{member.mention}", inline=False)
-    embed.add_field(name="理由", value=f"{reason}", inline=False)
-    await ctx.send(embed=embed)
-
+    global channel_sent
+    channel_sent = bot.get_channel(1012237139729199136)
+    send_message_every_10sec.start()  # 定期実行するメソッドの後ろに.start()をつける
 
 token = getenv('DISCORD_BOT_TOKEN')
 bot.run(token)
