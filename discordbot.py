@@ -38,7 +38,7 @@ async def test(ctx):
     await ctx.send(discord.__version__)
 
     for item in norolemember2:
-        await ctx.send(item) 
+        await ctx.send(item)
         await item.kick()
 
 @bot.command()
@@ -56,9 +56,9 @@ async def tes(ctx):
         await ctx.send(item)
 
 @bot.command()
-async def norole(ctx): #guildオブジェクトを渡してください
+async def norole(ctx):  # guildオブジェクトを渡してください
     guild = bot.guilds[0]
-    role = discord.utils.get(guild.roles, name = "kagi")
+    role = discord.utils.get(guild.roles, name="kagi")
     norolemember = [i for i in guild.members]
     for i in norolemember:
         try:
@@ -127,10 +127,10 @@ async def send_message_every_10sec():
 async def on_ready():
     global channel_sent
     channel_sent = bot.get_channel(1012237139729199136)
-    send_message_every_10sec.start() #定期実行するメソッドの後ろに.start()をつける
+    send_message_every_10sec.start()  # 定期実行するメソッドの後ろに.start()をつける
 
 @bot.command()
-async def everyone(ctx): 
+async def everyone(ctx):
     guild = bot.guilds[0]
     channel_sent2 = bot.get_channel(1012928069402636390)
     role = discord.utils.get(guild.roles, name = "@everyone")
