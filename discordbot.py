@@ -72,7 +72,7 @@ async def on_message(message):
     words=['https']
     words2=['remove']
     member = message.author
-    role = discord.utils.get(message.guild.roles, name = "kagi")
+    role = discord.utils.get(message.guild.roles, name="kagi")
     for word in words:
         if word in message.content:
             print(member)
@@ -104,7 +104,7 @@ async def send_message_every_10sec():
     await channel_sent.send(now)
     if now == 'Saturday/04:01':
         await channel_sent.send(now + "全員のkagi権限削除")
-        role = discord.utils.get(guild.roles, name = "kagi")
+        role = discord.utils.get(guild.roles, name="kagi")
         norolemember = [i for i in guild.members]
         for i in norolemember:
             try:
@@ -114,13 +114,13 @@ async def send_message_every_10sec():
 
         await channel_sent.send(now + "鍵部屋をプライベート解除")
         channel_sent2 = bot.get_channel(1012928069402636390)
-        role2 = discord.utils.get(guild.roles, name = "@everyone")
+        role2 = discord.utils.get(guild.roles, name="@everyone")
         await channel_sent2.set_permissions(role2, read_messages=True)
 
-    if now == 'Tuesday/04:01': 
+    if now == 'Tuesday/04:01':
         await channel_sent.send(now + "鍵部屋をプライベート化")
         channel_sent2 = bot.get_channel(1012928069402636390)
-        role2 = discord.utils.get(guild.roles, name = "@everyone")
+        role2 = discord.utils.get(guild.roles, name="@everyone")
         await channel_sent2.set_permissions(role2, read_messages=False)
 
 @bot.event
@@ -133,7 +133,7 @@ async def on_ready():
 async def everyone(ctx):
     guild = bot.guilds[0]
     channel_sent2 = bot.get_channel(1012928069402636390)
-    role = discord.utils.get(guild.roles, name = "@everyone")
+    role = discord.utils.get(guild.roles, name="@everyone")
     await channel_sent2.set_permissions(role, read_messages=False)
 
 @bot.event
