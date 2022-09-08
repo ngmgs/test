@@ -1,5 +1,6 @@
 import discord
 import traceback
+import re
 from discord.ext import commands
 from discord.ext import tasks
 from os import getenv
