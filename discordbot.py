@@ -69,7 +69,7 @@ async def kick(ctx, member: discord.Member, reason):
     embed.add_field(name="メンバー", value=f"{member.mention}", inline=False)
     embed.add_field(name="理由", value=f"{reason}", inline=False)
     await ctx.send(embed=embed)
-
+'''
 @bot.event
 async def on_message(message):
     words = ['https']
@@ -89,7 +89,7 @@ async def on_message(message):
             await member.remove_roles(role, atomic=True)  # removeを含む文字を発言すると発言したメンバーの役職kagiを削除
 
     await bot.process_commands(message)
-
+'''
 @bot.event
 async def on_command_error(ctx, error):
     orig_error = getattr(error, "original", error)
