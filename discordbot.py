@@ -8,7 +8,7 @@ from datetime import datetime, timezone, timedelta, time
 
 
 bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
-
+is_text = {}
 
 @bot.command()
 async def test(ctx):
@@ -79,7 +79,6 @@ async def _check_url(message: discord.Message):
     role = discord.utils.get(message.guild.roles, name="kagi")
     member = message.author
     pattern = pattern = re.compile(r"https?://[\w/:%#\$&\?\(\)~\.=\+\-]+")
-    is_text = {}
 
 
     if message.author.bot:
